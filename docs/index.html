@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI Chat History Auto-Delete — keep your Claude chats tidy, privately</title>
-  <meta name="description" content="A privacy-first Chrome extension that removes older claude.ai conversations on a schedule you control. Nothing leaves your browser." />
+  <meta name="description" content="Chrome extension for claude.ai: delete chats older than X days—pick the number. Runs locally; nothing sent to us." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet" />
@@ -39,7 +39,7 @@
         <a href="#features" class="hover:text-clay">Features</a>
         <a href="#how" class="hover:text-clay">How it works</a>
         <a href="privacy.html" class="hover:text-clay">Privacy</a>
-        <a href="https://github.com/ActivistChecklist/ai-chat-history-autodelete" class="text-moss hover:underline">Source</a>
+        <a href="https://github.com/ActivistChecklist/ai-chat-history-autodelete" class="hover:text-clay">Source</a>
       </nav>
     </div>
   </header>
@@ -52,10 +52,10 @@
         <div class="max-w-xl">
           <p class="mb-4 inline-block rounded-full border border-mist bg-white/60 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-moss">Unofficial · works with claude.ai</p>
           <h1 class="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-ink md:text-5xl lg:text-[3.25rem]">
-            Delete old Claude chats on <em class="not-italic text-clay">your</em> schedule.
+            Delete Claude chats <em class="not-italic text-clay">older than X days</em>.
           </h1>
           <p class="mt-6 text-lg leading-relaxed text-ink/75">
-            Set an age threshold, pick how often to run, and let the extension clean up your conversation list—locally in your browser. No accounts with us, no analytics, no cloud.
+            You choose X (30 is the default). The extension removes every conversation past that many days—on a timer or when you hit Run. It only talks to claude.ai using your open tab. No account with us, no analytics, no servers.
           </p>
           <div class="mt-10 flex flex-wrap items-center gap-4">
             <a
@@ -69,19 +69,19 @@
         </div>
         <div class="relative">
           <div class="rounded-2xl border border-mist bg-white p-8 shadow-xl shadow-ink/5">
-            <p class="font-display text-lg font-medium text-moss">What stays private</p>
+            <p class="font-display text-lg font-medium text-moss">What we never see</p>
             <ul class="mt-6 space-y-4 text-sm leading-relaxed text-ink/80">
               <li class="flex gap-3">
                 <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-clay" aria-hidden="true"></span>
-                <span>Settings and run history live in <code class="rounded bg-mist/80 px-1.5 py-0.5 text-xs">chrome.storage.local</code> only.</span>
+                <span>Your settings and “how many deleted last time” sit in <code class="rounded bg-mist/80 px-1.5 py-0.5 text-xs">chrome.storage.local</code> on this machine only.</span>
               </li>
               <li class="flex gap-3">
                 <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-clay" aria-hidden="true"></span>
-                <span>We never see your messages, titles, or IDs—only a count of how many chats were removed per run.</span>
+                <span>We don’t get your messages, chat names, or links. At most you keep a <strong class="font-medium text-ink">number</strong> per run.</span>
               </li>
               <li class="flex gap-3">
                 <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-clay" aria-hidden="true"></span>
-                <span>Network use is limited to <strong class="font-medium text-ink">claude.ai</strong> so deletions can run in your session.</span>
+                <span>Traffic goes to <strong class="font-medium text-ink">claude.ai</strong> only—the same site you already use.</span>
               </li>
             </ul>
           </div>
@@ -90,20 +90,20 @@
     </section>
 
     <section id="features" class="mx-auto max-w-6xl px-5 py-20 md:px-8">
-      <h2 class="font-display text-3xl font-semibold text-ink md:text-4xl">Built for control</h2>
-      <p class="mt-3 max-w-2xl text-lg text-ink/70">Everything runs in Chrome. You choose when it runs and how aggressive the cutoff is.</p>
-      <div class="mt-14 grid gap-8 md:grid-cols-3">
-        <article class="group rounded-xl border border-mist bg-white p-8 shadow-sm transition hover:border-clay/30 hover:shadow-md">
-          <h3 class="font-display text-xl font-semibold text-ink">Age threshold</h3>
-          <p class="mt-3 text-sm leading-relaxed text-ink/70">Chats older than your cutoff (default 30 days) can be removed automatically or when you run a manual check.</p>
+      <h2 class="font-display text-3xl font-semibold text-ink md:text-4xl">What you get</h2>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-xl border border-mist bg-white p-7 shadow-sm">
+          <h3 class="font-display text-lg font-semibold text-ink">Run daily, weekly, monthly—or never on a timer</h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink/75">Until you change it, it only runs when <strong class="font-medium text-ink">you</strong> say so (manual). Add a schedule when you’re ready.</p>
         </article>
-        <article class="group rounded-xl border border-mist bg-white p-8 shadow-sm transition hover:border-clay/30 hover:shadow-md">
-          <h3 class="font-display text-xl font-semibold text-ink">Scheduling</h3>
-          <p class="mt-3 text-sm leading-relaxed text-ink/70">Daily, weekly, monthly, or manual-only—manual is the default until you finish setup or change it.</p>
+        <article class="rounded-xl border border-mist bg-white p-7 shadow-sm">
+          <h3 class="font-display text-lg font-semibold text-ink">“Run now” anytime</h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink/75">Open Settings and start a pass, or use the controls on claude.ai when deletes are pending.</p>
         </article>
-        <article class="group rounded-xl border border-mist bg-white p-8 shadow-sm transition hover:border-clay/30 hover:shadow-md">
-          <h3 class="font-display text-xl font-semibold text-ink">Clear UI</h3>
-          <p class="mt-3 text-sm leading-relaxed text-ink/70">A slim top bar on claude.ai when something needs your attention—progress, recent runs, or chats pending confirmation.</p>
+        <article class="rounded-xl border border-mist bg-white p-7 shadow-sm">
+          <h3 class="font-display text-lg font-semibold text-ink">It doesn’t remember what you deleted</h3>
+          <p class="mt-3 text-sm leading-relaxed text-ink/75">You might see something like “12 chats removed”—that’s it. No titles, no list of conversations.</p>
         </article>
       </div>
     </section>
@@ -114,18 +114,18 @@
         <ol class="mt-12 grid gap-10 md:grid-cols-3">
           <li class="relative pl-10">
             <span class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-moss font-display text-sm font-semibold text-white">1</span>
-            <h3 class="font-medium text-ink">Install &amp; open claude.ai</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink/70">Keep a signed-in tab open when you want scheduled or manual runs—the extension uses your existing session.</p>
+            <h3 class="font-medium text-ink">Install, then open claude.ai</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">You must be signed in in a normal tab. The extension reuses that session—it does not log in for you.</p>
           </li>
           <li class="relative pl-10">
             <span class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-moss font-display text-sm font-semibold text-white">2</span>
-            <h3 class="font-medium text-ink">Configure in Settings</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink/70">Set the age threshold and schedule (or stay on manual). Optional browser notifications when action is pending.</p>
+            <h3 class="font-medium text-ink">Set “older than X days” and how often</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">Put in your day count. Choose a repeat schedule or leave it on manual. Turn on browser alerts if you want a nudge when deletes are waiting.</p>
           </li>
           <li class="relative pl-10">
             <span class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-moss font-display text-sm font-semibold text-white">3</span>
-            <h3 class="font-medium text-ink">Let it run</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink/70">The next check removes conversations past your threshold—including ones that aged while no tab was open.</p>
+            <h3 class="font-medium text-ink">It deletes, or you click Run</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">On the next timed run—or when you hit Run—it wipes every chat past your day limit.</p>
           </li>
         </ol>
       </div>
@@ -135,7 +135,7 @@
       <div class="rounded-2xl bg-moss px-8 py-12 text-center text-paper md:px-16">
         <p class="font-display text-2xl font-semibold md:text-3xl">From Activist Checklist</p>
         <p class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-paper/85">
-          We build tools that respect your data. Questions about privacy? Read our <a class="font-medium text-white underline decoration-clay decoration-2 underline-offset-4 hover:decoration-white" href="privacy.html">privacy policy</a> or reach out via the contact there.
+          We don’t want your data. Read the <a class="font-medium text-white underline decoration-clay decoration-2 underline-offset-4 hover:decoration-white" href="privacy.html">privacy policy</a> or email the address on that page if something’s unclear.
         </p>
         <a href="https://activistchecklist.org/" class="mt-8 inline-block text-sm font-semibold text-clay hover:text-white">activistchecklist.org →</a>
       </div>
@@ -144,7 +144,10 @@
 
   <footer class="border-t border-mist bg-paper">
     <div class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-12 md:flex-row md:items-center md:justify-between md:px-8">
-      <p class="text-sm text-ink/60">© Activist Checklist. Not affiliated with Anthropic or Claude.</p>
+      <p class="text-sm text-ink/60">
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license" class="text-moss underline decoration-mist underline-offset-2 hover:text-clay">CC BY-SA 4.0</a>
+        · Activist Checklist. Not affiliated with Anthropic or Claude.
+      </p>
       <div class="flex flex-wrap gap-6 text-sm font-medium text-ink/70">
         <a href="privacy.html" class="hover:text-clay">Privacy</a>
         <a href="https://github.com/ActivistChecklist/ai-chat-history-autodelete" class="hover:text-clay">GitHub</a>

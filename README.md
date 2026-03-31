@@ -1,8 +1,8 @@
 # AI Chat History Auto-Delete (AI CHAD)
 
-Privacy-focused Chrome extension that auto-deletes AI chat history older than your specified threshold.
+Chrome extension for **claude.ai**: **delete chats older than X days** (you choose X; 30 is the default). Runs in your browser only—nothing is sent to us.
 
-Created by the team at [Activist Checklist](https://activistchecklist.org/).
+Made by [Activist Checklist](https://activistchecklist.org/).
 
 ## Project website (GitHub Pages)
 
@@ -11,26 +11,27 @@ Created by the team at [Activist Checklist](https://activistchecklist.org/).
 
 ## Install Chrome Extension
 
-- **Marketing / privacy pages:** [Project site](https://activistchecklist.github.io/ai-chat-history-autodelete/) (after Pages is enabled).
+- **Chrome Web Store:** (LINK HERE)
+- **Marketing / privacy pages:** [Project site](https://activistchecklist.github.io/ai-chat-history-autodelete/).
 - **From source:** Clone this repo, then follow [Build & packaging](#build--packaging) and load `dist/` via `chrome://extensions` → **Load unpacked**, or install from the zip under `release/`.
-- **Chrome Web Store:** Add the listing link on the project site and here once the extension is published ([Developer Dashboard](https://chrome.google.com/webstore/devconsole)).
 
 ## Features
 
-- **Auto-delete**: Set an age threshold (default 30 days) — chats older than that can be auto-deleted
-- **Scheduled runs**: Daily (recommended), weekly, monthly, or manual only — **manual** is the default until you finish setup or change settings
-- **Manual run**: Run manually at any point
-- **Activity history**: Records the number of chats deleted each time the script ran in the last 30 days (doesn't record chat name or ID, just the total number deleted)
+- **Delete chats older than X days** — You set X (e.g. 30). The extension deletes conversations **older than that many days**. That is the whole point.
+- **Run on a schedule or not** — Once a day, once a week, once a month, or **never automatically** until you click Run. Out of the box it stays **manual-only** until you finish setup or change it.
+- **“Run now”** — Kick off a delete pass whenever you want from Settings (or from the bar on claude.ai when something needs you).
+- **Bar on claude.ai** — When a run is happening, just finished, or chats are waiting for you to confirm, you get a small top bar on the page. Dismiss it when you’re done reading it.
+- **No list of what got deleted** — You might see a number (e.g. how many were removed last time). It doesn’t save chat names or links.
 
 ## Usage
 
-1. **Click the extension icon** — Opens [claude.ai](https://claude.ai) (or focuses an existing tab) and shows a top bar on the page when there's progress, a recent deletion, or chats pending confirmation. The bar is dismissable.
-2. **Claude in a tab**: Keep [claude.ai](https://claude.ai) open and signed in when a check runs—the extension uses that tab's session. It does **not** open Claude automatically during scheduled runs.
-3. **Run**: Use **Run now** in Settings (or the top bar when there's pending) or wait for scheduled runs
+1. **Click the extension icon** — Opens [claude.ai](https://claude.ai) (or focuses a tab you already have). If something is running, just finished, or needs you to confirm deletes, a **thin bar** appears at the top of the page. Close it when you’re done reading.
+2. **Keep claude.ai open when you want work to happen** — Signed in, normal browser tab. The extension uses **your** login. It does **not** open Claude for you when a scheduled time hits—you have to have the site open.
+3. **Make it go** — Use **Run now** in Settings, or wait for your schedule, or use the bar when it says there’s pending stuff.
 
-### Notice: You must open claude.ai
+### You need claude.ai open in a tab
 
-The extension needs a **claude.ai** tab open to run. Nothing happens while no claude.ai tab is open. When you open claude.ai, the **next** scheduled check (or **Run now** from Settings) removes **all** conversations **older than your age threshold**—including chats that aged past that cutoff while no claude.ai tab was open.
+If no **claude.ai** tab is open, the extension does **nothing**—it can’t see your session. When you **do** have a tab open and a run happens (scheduled or **Run now**), it deletes **every chat that is older than X days** based on the number you set—including chats that “became” older than X while you didn’t have a tab open.
 
 ## Security — What we don't store
 
@@ -77,7 +78,7 @@ Optional: Mozilla’s **`web-ext lint`** can cross-check manifest and common iss
 
 | Permission / access | Why |
 |---------------------|-----|
-| `storage` | Save settings (threshold, schedule) and local activity counts on your device only. |
+| `storage` | Save your “older than X days” number, schedule, and local run counts on your device only. |
 | `alarms` | Run scheduled deletion checks. |
 | `tabs` | Find or focus claude.ai so work runs in your signed-in session. |
 | `scripting` | Run logic in the page context on claude.ai as designed. |
