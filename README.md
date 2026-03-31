@@ -2,6 +2,8 @@
 
 Privacy-focused Chrome extension that auto-deletes AI chat history older than your specified threshold.
 
+Created by the team at [Activist Checklist](https://activistchecklist.org/).
+
 ## Install Chrome Extension
 
 (Chrome Webstore Button here)

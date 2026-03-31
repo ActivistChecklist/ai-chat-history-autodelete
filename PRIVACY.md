@@ -37,4 +37,4 @@ If this policy changes, the updated version will be posted here and the effectiv
 
 ## Contact
 
-If you have questions about this privacy policy, you can reach me at [YOUR EMAIL].
+If you have questions about this privacy policy, you can reach me at <contact@activistchecklist.org>.
