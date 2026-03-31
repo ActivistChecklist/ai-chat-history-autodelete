@@ -1,5 +1,7 @@
 # Privacy Policy — Claude Chat Auto-Delete Extension
 
+**Canonical public copy (HTTPS, for store listings):** [activistchecklist.github.io/ai-chat-history-autodelete/privacy.html](https://activistchecklist.github.io/ai-chat-history-autodelete/privacy.html)
+
 **Effective Date:** March 19, 2026
 
 ## The short version

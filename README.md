@@ -4,9 +4,16 @@ Privacy-focused Chrome extension that auto-deletes AI chat history older than yo
 
 Created by the team at [Activist Checklist](https://activistchecklist.org/).
 
+## Project website (GitHub Pages)
+
+- **Site:** [activistchecklist.github.io/ai-chat-history-autodelete](https://activistchecklist.github.io/ai-chat-history-autodelete/)
+- **Privacy policy (use this URL in the Chrome Web Store):** [activistchecklist.github.io/ai-chat-history-autodelete/privacy.html](https://activistchecklist.github.io/ai-chat-history-autodelete/privacy.html)
+
 ## Install Chrome Extension
 
-(Chrome Webstore Button here)
+- **Marketing / privacy pages:** [Project site](https://activistchecklist.github.io/ai-chat-history-autodelete/) (after Pages is enabled).
+- **From source:** Clone this repo, then follow [Build & packaging](#build--packaging) and load `dist/` via `chrome://extensions` → **Load unpacked**, or install from the zip under `release/`.
+- **Chrome Web Store:** Add the listing link on the project site and here once the extension is published ([Developer Dashboard](https://chrome.google.com/webstore/devconsole)).
 
 ## Features
 
@@ -33,7 +40,9 @@ We do NOT store:
 
 - **Deleted chat IDs** — Never stored. Used only in memory during the API call to delete, then discarded.
 - **Deleted chat names/titles** — Never stored. The activity log records only how many chats were deleted.
-- **No external transmission** — All storage is local (`chrome.storage.local`). Nothing is sent to us or any third party. See [PRIVACY.md](PRIVACY.md).
+- **No external transmission** — All storage is local (`chrome.storage.local`). Nothing is sent to us or any third party.
+
+**Privacy policy:** [PRIVACY.md](PRIVACY.md) (source) · [Hosted copy for listings](https://activistchecklist.github.io/ai-chat-history-autodelete/privacy.html) (after GitHub Pages is enabled)
 
 ## Build & packaging
 
@@ -66,5 +75,11 @@ Optional: Mozilla’s **`web-ext lint`** can cross-check manifest and common iss
 
 ## Permissions
 
-- `storage`, `alarms`, `tabs`, `scripting`
-- `https://claude.ai/*` — no external domains, no analytics
+| Permission / access | Why |
+|---------------------|-----|
+| `storage` | Save settings (threshold, schedule) and local activity counts on your device only. |
+| `alarms` | Run scheduled deletion checks. |
+| `tabs` | Find or focus claude.ai so work runs in your signed-in session. |
+| `scripting` | Run logic in the page context on claude.ai as designed. |
+| `notifications` | Optional browser notifications when chats are pending confirmation or need attention. |
+| `https://claude.ai/*` | Only this origin—list/delete conversations per your settings. No other domains, no analytics. |

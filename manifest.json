@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "AI Chat History Auto-Delete",
   "version": "1.0.0",
-  "description": "Privacy-focused extension to auto-delete Claude chat history older than your specified threshold",
+  "description": "Auto-delete older chats on claude.ai by age threshold. Unofficial; not affiliated with Anthropic. Privacy-focused; runs locally.",
   "permissions": [
     "storage",
     "alarms",
