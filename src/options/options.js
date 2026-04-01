@@ -116,7 +116,7 @@ function updateAutosaveUi(state) {
   const base = 'text-sm leading-snug ';
   if (state === 'pending') {
     msg.className = base + 'text-amber-800 dark:text-amber-200 font-medium';
-    msg.textContent = 'Unsaved changes — saving in a moment…';
+    msg.textContent = 'Unsaved changes…';
     btn.disabled = false;
   } else if (state === 'saving') {
     msg.className = base + 'text-slate-600 dark:text-slate-400';
@@ -134,7 +134,7 @@ function updateAutosaveUi(state) {
     btn.disabled = false;
   } else {
     msg.className = base + 'text-slate-600 dark:text-slate-300';
-    msg.textContent = 'Changes save automatically a few seconds after you edit.';
+    msg.textContent = 'Changes save automatically.';
     btn.disabled = false;
   }
 }
