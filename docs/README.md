@@ -6,8 +6,8 @@ This folder is the **static marketing site** and the **canonical privacy policy 
 
 With the default GitHub Pages setup for this repo:
 
-- Site: `https://activistchecklist.github.io/ai-chat-history-autodelete/`
-- Privacy policy: `https://activistchecklist.github.io/ai-chat-history-autodelete/privacy.html`
+- Site: `https://activistchecklist.github.io/ai-chat-history-auto-delete/`
+- Privacy policy: `https://activistchecklist.github.io/ai-chat-history-auto-delete/privacy.html`
 
 Use the privacy URL in the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole) under **Privacy practices**.
 

@@ -1,5 +1,5 @@
 {
-  "name": "ai-chat-history-autodelete",
+  "name": "ai-chat-history-auto-delete",
   "version": "1.0.0",
   "private": true,
   "scripts": {

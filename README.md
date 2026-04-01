@@ -6,13 +6,13 @@ Made by [Activist Checklist](https://activistchecklist.org/).
 
 ## Project website (GitHub Pages)
 
-- **Site:** [activistchecklist.github.io/ai-chat-history-autodelete](https://activistchecklist.github.io/ai-chat-history-autodelete/)
-- **Privacy policy (use this URL in the Chrome Web Store):** [activistchecklist.github.io/ai-chat-history-autodelete/privacy.html](https://activistchecklist.github.io/ai-chat-history-autodelete/privacy.html)
+- **Site:** [activistchecklist.github.io/ai-chat-history-auto-delete](https://activistchecklist.github.io/ai-chat-history-auto-delete/)
+- **Privacy policy (use this URL in the Chrome Web Store):** [activistchecklist.github.io/ai-chat-history-auto-delete/privacy.html](https://activistchecklist.github.io/ai-chat-history-auto-delete/privacy.html)
 
 ## Install Chrome Extension
 
 - **Chrome Web Store:** (LINK HERE)
-- **Marketing / privacy pages:** [Project site](https://activistchecklist.github.io/ai-chat-history-autodelete/).
+- **Marketing / privacy pages:** [Project site](https://activistchecklist.github.io/ai-chat-history-auto-delete/).
 - **From source:** Clone this repo, then follow [Build & packaging](#build--packaging) and load `dist/` via `chrome://extensions` → **Load unpacked**, or install from the zip under `release/`.
 
 ## Features
@@ -43,7 +43,7 @@ We do NOT store:
 - **Deleted chat names/titles** — Never stored. The activity log records only how many chats were deleted.
 - **No external transmission** — All storage is local (`chrome.storage.local`). Nothing is sent to us or any third party.
 
-**Privacy policy:** [PRIVACY.md](PRIVACY.md) (source) · [Hosted copy for listings](https://activistchecklist.github.io/ai-chat-history-autodelete/privacy.html) (after GitHub Pages is enabled)
+**Privacy policy:** [PRIVACY.md](PRIVACY.md) (source) · [Hosted copy for listings](https://activistchecklist.github.io/ai-chat-history-auto-delete/privacy.html) (after GitHub Pages is enabled)
 
 ## Build & packaging
 
@@ -57,7 +57,7 @@ yarn build
 ```
 
 - Runs **Tailwind** (`build:css`) so `src/styles/auto-delete.css` is minified, then copies only listed runtime files into **`dist/`**.
-- Writes **`release/ai-chat-history-autodelete-<version>.zip`** (version from `manifest.json`). Upload that zip to the Chrome Web Store, or in `chrome://extensions` choose **Load unpacked** and select the **`dist`** folder.
+- Writes **`release/ai-chat-history-auto-delete-<version>.zip`** (version from `manifest.json`). Upload that zip to the Chrome Web Store, or in `chrome://extensions` choose **Load unpacked** and select the **`dist`** folder.
 
 Options:
 

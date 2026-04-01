@@ -5,7 +5,7 @@
 ## Steps
 
 1. Open Brave/Chrome → `brave://extensions` → Developer mode → **Load unpacked**
-2. Select the `discovery` folder (not the parent `ai-chat-history-autodelete` folder)
+2. Select the `discovery` folder (not the parent `ai-chat-history-auto-delete` folder)
 3. Go to [claude.ai](https://claude.ai) and log in
 4. Browse around:
    - Open the chat list / "Show all chats" / sidebar

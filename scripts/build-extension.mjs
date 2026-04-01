@@ -132,7 +132,7 @@ function validateManifest(manifestPath) {
 
 function zipDist(version) {
   const safeVersion = String(version).replace(/[^0-9a-z._-]+/gi, '-');
-  const zipName = `ai-chat-history-autodelete-${safeVersion}.zip`;
+  const zipName = `ai-chat-history-auto-delete-${safeVersion}.zip`;
   const zipPath = path.join(RELEASE, zipName);
   fs.mkdirSync(RELEASE, { recursive: true });
   if (fs.existsSync(zipPath)) fs.unlinkSync(zipPath);
