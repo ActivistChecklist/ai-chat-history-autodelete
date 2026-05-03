@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AI Chat History Auto-Delete — keep your Claude chats tidy, privately</title>
+  <title>AI Chat History Auto-Delete: keep your Claude chats tidy, privately</title>
   <meta name="description"
-    content="Chrome extension for claude.ai: delete chats older than X days—pick the number. Runs locally; nothing sent to us." />
+    content="Chrome extension for claude.ai: delete chats older than X days. Pick the number. Runs locally; nothing sent to us." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -68,26 +68,24 @@
             Unofficial · works with claude.ai</p>
           <h1
             class="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-ink md:text-5xl lg:text-[3.25rem]">
-            Delete Claude chats <em class="not-italic text-clay">older than X days</em>.
+            <em class="not-italic text-clay">Automatically delete</em> your Claude chat history.
           </h1>
           <p class="mt-6 text-lg leading-relaxed text-ink/75">
-            You choose X (30 is the default). The extension removes every conversation past that many days—on a timer or
-            when you hit Run. It only talks to claude.ai using your open tab. No account with us, no analytics, no
-            servers.
+            Keeping your old AI chats around is a risk. Most peopple never look at them. They can present legal risk and
+            could be found by hackers.
+            This extension automatically deletes them for you on a schedule.
           </p>
-          <div class="mt-10 flex flex-wrap items-center gap-4">
-            <a href="https://chromewebstore.google.com/detail/ai-chat-history-auto-dele/ipmoefogkkpbgpbniklknonnmbmcbnpk?authuser=0&hl=en"
-              class="inline-flex items-center justify-center gap-2 rounded-lg bg-clay px-6 py-3 text-sm font-semibold text-white shadow-md shadow-clay/25 transition hover:bg-clay/90 focus:outline-none focus:ring-2 focus:ring-moss focus:ring-offset-2"
-              rel="noopener noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 shrink-0" aria-hidden="true">
-                <path fill="currentColor" d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-5.344 9.257c.206.01.413.016.621.016 6.627 0 12-5.373 12-12 0-1.54-.29-3.011-.818-4.364zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728Z" />
+          <div class="mt-10">
+            <a id="store-cta"
+              href="https://chromewebstore.google.com/detail/ai-chat-history-auto-dele/ipmoefogkkpbgpbniklknonnmbmcbnpk?authuser=0&hl=en"
+              class="inline-flex items-center justify-center gap-3 rounded-xl bg-clay px-10 py-4 text-xl font-semibold text-white shadow-lg shadow-clay/30 transition hover:bg-clay/90 focus:outline-none focus:ring-2 focus:ring-moss focus:ring-offset-2 md:px-12 md:py-5 md:text-lg"
+              rel="noopener noreferrer" aria-label="Add to Chrome">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-7 w-7 shrink-0 md:h-8 md:w-8"
+                aria-hidden="true">
+                <path id="store-cta-path" fill="currentColor"
+                  d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-5.344 9.257c.206.01.413.016.621.016 6.627 0 12-5.373 12-12 0-1.54-.29-3.011-.818-4.364zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728Z" />
               </svg>
-              Add to Chrome
-            </a>
-            <a href="https://github.com/ActivistChecklist/ai-chat-history-auto-delete-extension#readme"
-              class="inline-flex items-center justify-center rounded-lg border-2 border-moss/15 bg-white px-6 py-3 text-sm font-semibold text-moss transition hover:border-clay/40 hover:bg-mist/30 focus:outline-none focus:ring-2 focus:ring-moss focus:ring-offset-2"
-              rel="noopener noreferrer">
-              View code on GitHub
+              <span id="store-cta-label">Add to Chrome</span>
             </a>
           </div>
         </div>
@@ -108,7 +106,7 @@
               </li>
               <li class="flex gap-3">
                 <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-clay" aria-hidden="true"></span>
-                <span>Traffic goes to <strong class="font-medium text-ink">claude.ai</strong> only—the same site you
+                <span>Traffic goes to <strong class="font-medium text-ink">claude.ai</strong> only, the same site you
                   already use.</span>
               </li>
             </ul>
@@ -122,7 +120,7 @@
 
       <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <article class="rounded-xl border border-mist bg-white p-7 shadow-sm">
-          <h3 class="font-display text-lg font-semibold text-ink">Run daily, weekly, monthly—or never on a timer</h3>
+          <h3 class="font-display text-lg font-semibold text-ink">Run daily, weekly, monthly, or never on a timer</h3>
           <p class="mt-3 text-sm leading-relaxed text-ink/75">Until you change it, it only runs when <strong
               class="font-medium text-ink">you</strong> say so (manual). Add a schedule when you’re ready.</p>
         </article>
@@ -133,7 +131,8 @@
         </article>
         <article class="rounded-xl border border-mist bg-white p-7 shadow-sm">
           <h3 class="font-display text-lg font-semibold text-ink">It doesn’t remember what you deleted</h3>
-          <p class="mt-3 text-sm leading-relaxed text-ink/75">You might see something like “12 chats removed”—that’s it.
+          <p class="mt-3 text-sm leading-relaxed text-ink/75">You might see something like “12 chats removed.” That’s
+            it.
             No titles, no list of conversations.</p>
         </article>
       </div>
@@ -148,7 +147,7 @@
               class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-moss font-display text-sm font-semibold text-white">1</span>
             <h3 class="font-medium text-ink">Install, then open claude.ai</h3>
             <p class="mt-2 text-sm leading-relaxed text-ink/70">You must be signed in in a normal tab. The extension
-              reuses that session—it does not log in for you.</p>
+              reuses that session; it does not log in for you.</p>
           </li>
           <li class="relative pl-10">
             <span
@@ -161,7 +160,8 @@
             <span
               class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-moss font-display text-sm font-semibold text-white">3</span>
             <h3 class="font-medium text-ink">It deletes, or you click Run</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink/70">On the next timed run—or when you hit Run—it wipes every
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">On the next timed run, or when you hit Run, it wipes
+              every
               chat past your day limit.</p>
           </li>
         </ol>
@@ -177,7 +177,7 @@
             href="privacy.html">privacy policy</a> or email the address on that page if something’s unclear.
         </p>
         <a href="https://activistchecklist.org/"
-          class="mt-8 inline-block text-sm font-semibold text-clay hover:text-white">activistchecklist.org →</a>
+          class="mt-8 inline-block text-sm font-semibold text-clay hover:text-white">ActivistChecklist.org →</a>
       </div>
     </section>
   </main>
@@ -198,6 +198,7 @@
       </div>
     </div>
   </footer>
+  <script src="store-cta.js" defer></script>
 </body>
 
 </html>
