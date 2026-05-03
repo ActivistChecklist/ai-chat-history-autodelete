@@ -301,17 +301,20 @@ if (window.__aichadTopBarLoaded) {
       slot.classList.add('aichad-top-bar__progress-slot--empty');
     }
     barEl.classList.remove('aichad-top-bar--progress');
+    barEl.classList.remove('aichad-top-bar--confirm');
     if (wrapEl && !wrapEl.classList.contains('aichad-top-bar-wrap--hidden')) {
       wrapEl.style.height = `${BAR_HEIGHT}px`;
       updateFixedButtonOffsets();
     }
   }
 
-  function showProgress(current, total, deleted) {
+  function showProgress(current, total, deleted, roseProgress = false) {
     showBar();
     resetBrandLayout();
     const bar = createBar();
     if (!bar) return;
+    if (roseProgress) bar.classList.add('aichad-top-bar--confirm');
+    else bar.classList.remove('aichad-top-bar--confirm');
     bar.classList.add('aichad-top-bar--progress');
     const textEl = bar.querySelector('.aichad-top-bar__text');
     const slot = bar.querySelector('.aichad-top-bar__progress-slot');
@@ -568,7 +571,8 @@ if (window.__aichadTopBarLoaded) {
     if (barEl) barEl.classList.remove('aichad-top-bar--confirm');
 
     if (prog) {
-      showProgress(prog.current, prog.total, prog.deleted);
+      const roseProgress = !!(pend?.count && pend?.chatIds?.length);
+      showProgress(prog.current, prog.total, prog.deleted, roseProgress);
       return;
     }
 
@@ -615,7 +619,11 @@ if (window.__aichadTopBarLoaded) {
     if (changes[STORAGE_KEYS.DELETION_PROGRESS]) {
       const prog = changes[STORAGE_KEYS.DELETION_PROGRESS].newValue;
       if (prog) {
-        showProgress(prog.current, prog.total, prog.deleted);
+        void chrome.storage.local.get(STORAGE_KEYS.PENDING_CONFIRM).then((r) => {
+          const p = r[STORAGE_KEYS.PENDING_CONFIRM];
+          const roseProgress = !!(p?.count && p?.chatIds?.length);
+          showProgress(prog.current, prog.total, prog.deleted, roseProgress);
+        });
       } else {
         refreshState();
       }

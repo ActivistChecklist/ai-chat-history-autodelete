@@ -259,6 +259,23 @@ async function ensureClaudeTab({ autoOpen = false } = {}) {
   );
 }
 
+/**
+ * The tab captured when the scan ran may be closed or navigated away before the user confirms.
+ * MAIN-world fetch must run in a live claude.ai tab — resolve a current one, falling back from the hint.
+ */
+async function resolveClaudeTabForDeletion(preferredTabId) {
+  if (preferredTabId != null) {
+    try {
+      const tab = await chrome.tabs.get(preferredTabId);
+      const u = tab?.url ?? '';
+      if (u.startsWith(CLAUDE_URL)) return preferredTabId;
+    } catch {
+      // Tab closed or id invalid — fall through
+    }
+  }
+  return ensureClaudeTab();
+}
+
 async function runDeletionFlow(settings, options = {}) {
   const daysThreshold = resolveRunDaysThreshold(settings, options);
   const cutoff = deletionCutoffMs(daysThreshold);
@@ -295,16 +312,17 @@ async function runDeletionFlow(settings, options = {}) {
 }
 
 async function executeDeletion(tabId, chatIds) {
+  const resolvedTabId = await resolveClaudeTabForDeletion(tabId);
   const fetchOptsBuilder = claudeProvider.buildFetchOptions;
-  const orgId = await getOrgIdWithChatAccess(tabId, fetchOptsBuilder);
-  const deleted = await deleteChats(tabId, orgId, chatIds, fetchOptsBuilder);
+  const orgId = await getOrgIdWithChatAccess(resolvedTabId, fetchOptsBuilder);
+  const deleted = await deleteChats(resolvedTabId, orgId, chatIds, fetchOptsBuilder);
   const settings = await getSettings();
   if (settings.recordActivity !== false) {
     await addActivityEntry(deleted);
   }
   await setLastRun({ deleted, timestamp: Date.now() });
   try {
-    await chrome.tabs.sendMessage(tabId, { type: 'SHOW_RECENT_DELETE', count: deleted });
+    await chrome.tabs.sendMessage(resolvedTabId, { type: 'SHOW_RECENT_DELETE', count: deleted });
   } catch {
     // Content script may not be loaded
   }

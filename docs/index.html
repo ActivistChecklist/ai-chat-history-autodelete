@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI Chat History Auto-Delete — keep your Claude chats tidy, privately</title>
-  <meta name="description" content="Chrome extension for claude.ai: delete chats older than X days—pick the number. Runs locally; nothing sent to us." />
+  <meta name="description"
+    content="Chrome extension for claude.ai: delete chats older than X days—pick the number. Runs locally; nothing sent to us." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap"
+    rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -29,42 +33,62 @@
     };
   </script>
 </head>
+
 <body class="bg-paper text-ink font-sans antialiased">
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-clay focus:px-3 focus:py-2 focus:text-white">Skip to content</a>
+  <a href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-clay focus:px-3 focus:py-2 focus:text-white">Skip
+    to content</a>
 
   <header class="border-b border-mist/80 bg-paper/90 backdrop-blur-sm">
     <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-5 md:px-8">
-      <a href="./" class="font-display text-xl font-semibold tracking-tight text-ink md:text-2xl">AI Chat Auto-Delete</a>
+      <a href="./" class="font-display text-xl font-semibold tracking-tight text-ink md:text-2xl">AI Chat
+        Auto-Delete</a>
       <nav class="flex flex-wrap items-center gap-6 text-sm font-medium text-ink/80">
         <a href="#features" class="hover:text-clay">Features</a>
         <a href="#how" class="hover:text-clay">How it works</a>
         <a href="privacy.html" class="hover:text-clay">Privacy</a>
-        <a href="https://github.com/ActivistChecklist/ai-chat-history-auto-delete" class="hover:text-clay">Source</a>
+        <a href="https://github.com/ActivistChecklist/ai-chat-history-auto-delete-extension"
+          class="hover:text-clay">Source</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
     <section class="relative overflow-hidden border-b border-mist/60">
-      <div class="pointer-events-none absolute -right-24 top-12 h-72 w-72 rounded-full bg-clay/10 blur-3xl md:h-96 md:w-96" aria-hidden="true"></div>
-      <div class="pointer-events-none absolute -left-16 bottom-0 h-56 w-56 rounded-full bg-moss/10 blur-3xl" aria-hidden="true"></div>
-      <div class="relative mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-[1.1fr_0.9fr] md:items-center md:px-8 md:py-24">
+      <div
+        class="pointer-events-none absolute -right-24 top-12 h-72 w-72 rounded-full bg-clay/10 blur-3xl md:h-96 md:w-96"
+        aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -left-16 bottom-0 h-56 w-56 rounded-full bg-moss/10 blur-3xl"
+        aria-hidden="true"></div>
+      <div
+        class="relative mx-auto grid max-w-6xl gap-12 px-5 py-16 md:grid-cols-[1.1fr_0.9fr] md:items-center md:px-8 md:py-24">
         <div class="max-w-xl">
-          <p class="mb-4 inline-block rounded-full border border-mist bg-white/60 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-moss">Unofficial · works with claude.ai</p>
-          <h1 class="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-ink md:text-5xl lg:text-[3.25rem]">
+          <p
+            class="mb-4 inline-block rounded-full border border-mist bg-white/60 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-moss">
+            Unofficial · works with claude.ai</p>
+          <h1
+            class="font-display text-4xl font-semibold leading-[1.1] tracking-tight text-ink md:text-5xl lg:text-[3.25rem]">
             Delete Claude chats <em class="not-italic text-clay">older than X days</em>.
           </h1>
           <p class="mt-6 text-lg leading-relaxed text-ink/75">
-            You choose X (30 is the default). The extension removes every conversation past that many days—on a timer or when you hit Run. It only talks to claude.ai using your open tab. No account with us, no analytics, no servers.
+            You choose X (30 is the default). The extension removes every conversation past that many days—on a timer or
+            when you hit Run. It only talks to claude.ai using your open tab. No account with us, no analytics, no
+            servers.
           </p>
           <div class="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href="https://github.com/ActivistChecklist/ai-chat-history-auto-delete#readme"
-              class="inline-flex items-center justify-center rounded-lg bg-clay px-6 py-3 text-sm font-semibold text-white shadow-md shadow-clay/25 transition hover:bg-clay/90 focus:outline-none focus:ring-2 focus:ring-moss focus:ring-offset-2"
-            >
-              Install from GitHub
+            <a href="https://chromewebstore.google.com/detail/ai-chat-history-auto-dele/ipmoefogkkpbgpbniklknonnmbmcbnpk?authuser=0&hl=en"
+              class="inline-flex items-center justify-center gap-2 rounded-lg bg-clay px-6 py-3 text-sm font-semibold text-white shadow-md shadow-clay/25 transition hover:bg-clay/90 focus:outline-none focus:ring-2 focus:ring-moss focus:ring-offset-2"
+              rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 shrink-0" aria-hidden="true">
+                <path fill="currentColor" d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-5.344 9.257c.206.01.413.016.621.016 6.627 0 12-5.373 12-12 0-1.54-.29-3.011-.818-4.364zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728Z" />
+              </svg>
+              Add to Chrome
             </a>
-            <span class="text-sm text-ink/50">Chrome Web Store listing coming soon.</span>
+            <a href="https://github.com/ActivistChecklist/ai-chat-history-auto-delete-extension#readme"
+              class="inline-flex items-center justify-center rounded-lg border-2 border-moss/15 bg-white px-6 py-3 text-sm font-semibold text-moss transition hover:border-clay/40 hover:bg-mist/30 focus:outline-none focus:ring-2 focus:ring-moss focus:ring-offset-2"
+              rel="noopener noreferrer">
+              View code on GitHub
+            </a>
           </div>
         </div>
         <div class="relative">
@@ -73,15 +97,19 @@
             <ul class="mt-6 space-y-4 text-sm leading-relaxed text-ink/80">
               <li class="flex gap-3">
                 <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-clay" aria-hidden="true"></span>
-                <span>Your settings and “how many deleted last time” sit in <code class="rounded bg-mist/80 px-1.5 py-0.5 text-xs">chrome.storage.local</code> on this machine only.</span>
+                <span>Your settings and “how many deleted last time” sit in <code
+                    class="rounded bg-mist/80 px-1.5 py-0.5 text-xs">chrome.storage.local</code> on this machine
+                  only.</span>
               </li>
               <li class="flex gap-3">
                 <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-clay" aria-hidden="true"></span>
-                <span>We don’t get your messages, chat names, or links. At most you keep a <strong class="font-medium text-ink">number</strong> per run.</span>
+                <span>We don’t get your messages, chat names, or links. At most you keep a <strong
+                    class="font-medium text-ink">number</strong> per run.</span>
               </li>
               <li class="flex gap-3">
                 <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-clay" aria-hidden="true"></span>
-                <span>Traffic goes to <strong class="font-medium text-ink">claude.ai</strong> only—the same site you already use.</span>
+                <span>Traffic goes to <strong class="font-medium text-ink">claude.ai</strong> only—the same site you
+                  already use.</span>
               </li>
             </ul>
           </div>
@@ -95,15 +123,18 @@
       <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         <article class="rounded-xl border border-mist bg-white p-7 shadow-sm">
           <h3 class="font-display text-lg font-semibold text-ink">Run daily, weekly, monthly—or never on a timer</h3>
-          <p class="mt-3 text-sm leading-relaxed text-ink/75">Until you change it, it only runs when <strong class="font-medium text-ink">you</strong> say so (manual). Add a schedule when you’re ready.</p>
+          <p class="mt-3 text-sm leading-relaxed text-ink/75">Until you change it, it only runs when <strong
+              class="font-medium text-ink">you</strong> say so (manual). Add a schedule when you’re ready.</p>
         </article>
         <article class="rounded-xl border border-mist bg-white p-7 shadow-sm">
           <h3 class="font-display text-lg font-semibold text-ink">“Run now” anytime</h3>
-          <p class="mt-3 text-sm leading-relaxed text-ink/75">Open Settings and start a pass, or use the controls on claude.ai when deletes are pending.</p>
+          <p class="mt-3 text-sm leading-relaxed text-ink/75">Open Settings and start a pass, or use the controls on
+            claude.ai when deletes are pending.</p>
         </article>
         <article class="rounded-xl border border-mist bg-white p-7 shadow-sm">
           <h3 class="font-display text-lg font-semibold text-ink">It doesn’t remember what you deleted</h3>
-          <p class="mt-3 text-sm leading-relaxed text-ink/75">You might see something like “12 chats removed”—that’s it. No titles, no list of conversations.</p>
+          <p class="mt-3 text-sm leading-relaxed text-ink/75">You might see something like “12 chats removed”—that’s it.
+            No titles, no list of conversations.</p>
         </article>
       </div>
     </section>
@@ -113,19 +144,25 @@
         <h2 class="font-display text-3xl font-semibold text-ink md:text-4xl">How it works</h2>
         <ol class="mt-12 grid gap-10 md:grid-cols-3">
           <li class="relative pl-10">
-            <span class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-moss font-display text-sm font-semibold text-white">1</span>
+            <span
+              class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-moss font-display text-sm font-semibold text-white">1</span>
             <h3 class="font-medium text-ink">Install, then open claude.ai</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink/70">You must be signed in in a normal tab. The extension reuses that session—it does not log in for you.</p>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">You must be signed in in a normal tab. The extension
+              reuses that session—it does not log in for you.</p>
           </li>
           <li class="relative pl-10">
-            <span class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-moss font-display text-sm font-semibold text-white">2</span>
+            <span
+              class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-moss font-display text-sm font-semibold text-white">2</span>
             <h3 class="font-medium text-ink">Set “older than X days” and how often</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink/70">Put in your day count. Choose a repeat schedule or leave it on manual. Turn on browser alerts if you want a nudge when deletes are waiting.</p>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">Put in your day count. Choose a repeat schedule or leave
+              it on manual. Turn on browser alerts if you want a nudge when deletes are waiting.</p>
           </li>
           <li class="relative pl-10">
-            <span class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-moss font-display text-sm font-semibold text-white">3</span>
+            <span
+              class="absolute left-0 top-0 flex h-8 w-8 items-center justify-center rounded-full bg-moss font-display text-sm font-semibold text-white">3</span>
             <h3 class="font-medium text-ink">It deletes, or you click Run</h3>
-            <p class="mt-2 text-sm leading-relaxed text-ink/70">On the next timed run—or when you hit Run—it wipes every chat past your day limit.</p>
+            <p class="mt-2 text-sm leading-relaxed text-ink/70">On the next timed run—or when you hit Run—it wipes every
+              chat past your day limit.</p>
           </li>
         </ol>
       </div>
@@ -135,25 +172,32 @@
       <div class="rounded-2xl bg-moss px-8 py-12 text-center text-paper md:px-16">
         <p class="font-display text-2xl font-semibold md:text-3xl">From Activist Checklist</p>
         <p class="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-paper/85">
-          We don’t want your data. Read the <a class="font-medium text-white underline decoration-clay decoration-2 underline-offset-4 hover:decoration-white" href="privacy.html">privacy policy</a> or email the address on that page if something’s unclear.
+          We don’t want your data. Read the <a
+            class="font-medium text-white underline decoration-clay decoration-2 underline-offset-4 hover:decoration-white"
+            href="privacy.html">privacy policy</a> or email the address on that page if something’s unclear.
         </p>
-        <a href="https://activistchecklist.org/" class="mt-8 inline-block text-sm font-semibold text-clay hover:text-white">activistchecklist.org →</a>
+        <a href="https://activistchecklist.org/"
+          class="mt-8 inline-block text-sm font-semibold text-clay hover:text-white">activistchecklist.org →</a>
       </div>
     </section>
   </main>
 
   <footer class="border-t border-mist bg-paper">
-    <div class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-12 md:flex-row md:items-center md:justify-between md:px-8">
+    <div
+      class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-12 md:flex-row md:items-center md:justify-between md:px-8">
       <p class="text-sm text-ink/60">
-        <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license" class="text-moss underline decoration-mist underline-offset-2 hover:text-clay">CC BY-SA 4.0</a>
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license"
+          class="text-moss underline decoration-mist underline-offset-2 hover:text-clay">CC BY-SA 4.0</a>
         · Activist Checklist. Not affiliated with or endorsed by Anthropic.
       </p>
       <div class="flex flex-wrap gap-6 text-sm font-medium text-ink/70">
         <a href="privacy.html" class="hover:text-clay">Privacy</a>
-        <a href="https://github.com/ActivistChecklist/ai-chat-history-auto-delete" class="hover:text-clay">GitHub</a>
+        <a href="https://github.com/ActivistChecklist/ai-chat-history-auto-delete-extension"
+          class="hover:text-clay">GitHub</a>
         <a href="https://activistchecklist.org/" class="hover:text-clay">Activist Checklist</a>
       </div>
     </div>
   </footer>
 </body>
+
 </html>

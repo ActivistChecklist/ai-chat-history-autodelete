@@ -99,6 +99,7 @@ describe('message handler - TEST_ALARM', () => {
 
 describe('message handler - CONFIRM_DELETE', () => {
   it('returns error when execution fails', async () => {
+    chrome.tabs.get.mockResolvedValue({ id: 999, url: 'https://claude.ai/chat' });
     chrome.scripting.executeScript.mockResolvedValue([{
       result: { status: 401, ok: false, body: 'Unauthorized' }
     }]);
@@ -112,6 +113,29 @@ describe('message handler - CONFIRM_DELETE', () => {
     await vi.waitFor(() => expect(sendResponse).toHaveBeenCalled(), { timeout: 5000 });
     const response = sendResponse.mock.calls[0][0];
     expect(response.error).toBeDefined();
+  });
+
+  it('uses another Claude tab when stored tab id is stale', async () => {
+    const sendResponse = vi.fn();
+    chrome.tabs.get.mockRejectedValue(new Error('No tab with id: 614124583'));
+    chrome.tabs.query.mockResolvedValue([{ id: 42, url: 'https://claude.ai/new' }]);
+    chrome.scripting.executeScript
+      .mockResolvedValueOnce([{ result: { status: 200, ok: true, body: { organization: [{ uuid: 'org-1' }] } } }])
+      .mockResolvedValueOnce([{ result: { status: 200, ok: true, body: [] } }])
+      .mockResolvedValue([{ result: { status: 200, ok: true, body: { deleted: ['c1'] } } }]);
+    const result = messageHandler(
+      { type: 'CONFIRM_DELETE', tabId: 614124583, chatIds: ['c1'] },
+      {},
+      sendResponse
+    );
+    expect(result).toBe(true);
+    await vi.waitFor(() => expect(sendResponse).toHaveBeenCalled(), { timeout: 5000 });
+    expect(chrome.scripting.executeScript).toHaveBeenCalled();
+    const firstTarget = chrome.scripting.executeScript.mock.calls[0][0].target;
+    expect(firstTarget.tabId).toBe(42);
+    const response = sendResponse.mock.calls[0][0];
+    expect(response.deleted).toBe(1);
+    expect(response.error).toBeUndefined();
   });
 });
 

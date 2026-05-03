@@ -4,6 +4,8 @@ Chrome extension for **claude.ai**: **delete chats older than X days** (you choo
 
 Made by [Activist Checklist](https://activistchecklist.org/).
 
+**Repository:** [github.com/ActivistChecklist/ai-chat-history-auto-delete-extension](https://github.com/ActivistChecklist/ai-chat-history-auto-delete-extension)
+
 ## Project website (GitHub Pages)
 
 - **Site:** [activistchecklist.github.io/ai-chat-history-auto-delete](https://activistchecklist.github.io/ai-chat-history-auto-delete/)

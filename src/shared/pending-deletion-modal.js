@@ -151,21 +151,19 @@ export function openPendingDeletionModal(pend, opts = {}) {
         onError('No pending chats to delete.');
         return;
       }
+      closePendingDeletionModal(doc);
+      onModalCleanup?.();
       chrome.runtime.sendMessage(
         { type: 'CONFIRM_DELETE', tabId: p.tabId, chatIds: p.chatIds },
         async (res) => {
           if (chrome.runtime.lastError) {
-            if (btn) btn.disabled = false;
             onError(chrome.runtime.lastError.message);
             return;
           }
           if (res?.error) {
-            if (btn) btn.disabled = false;
             onError(res.error);
             return;
           }
-          closePendingDeletionModal(doc);
-          onModalCleanup?.();
           if (afterConfirmSuccess) await afterConfirmSuccess(res ?? {});
         }
       );

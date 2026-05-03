@@ -171,6 +171,15 @@
   transition: width 0.2s ease;
 }
 
+/* Deletion-in-progress after approving from pending bar/modal — match rose “mode” */
+.aichad-top-bar--confirm .aichad-top-bar__progress-bar {
+  background: #fecdd3;
+}
+
+.aichad-top-bar--confirm .aichad-top-bar__progress-fill {
+  background: #e11d48;
+}
+
 .aichad-top-bar__actions {
   display: flex;
   align-items: center;
@@ -579,6 +588,14 @@
 
   .aichad-top-bar__progress-fill {
     background: #2dd4bf;
+  }
+
+  .aichad-top-bar--confirm .aichad-top-bar__progress-bar {
+    background: #7f1d1d;
+  }
+
+  .aichad-top-bar--confirm .aichad-top-bar__progress-fill {
+    background: #f43f5e;
   }
 
   .aichad-top-bar__text--error {

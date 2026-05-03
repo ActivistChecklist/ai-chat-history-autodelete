@@ -59,6 +59,9 @@ globalThis.chrome = {
   },
   tabs: {
     query: vi.fn(async () => []),
+    get: vi.fn(async (tabId) => {
+      throw new Error(`No tab with id: ${tabId}`);
+    }),
     create: vi.fn(async (opts) => ({ id: 1, ...opts })),
     update: vi.fn(async () => ({})),
     sendMessage: vi.fn(async () => ({}))
